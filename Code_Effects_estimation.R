@@ -389,7 +389,7 @@ agg.es <- aggte(example_attgt, type = "dynamic")
 summary(agg.es) #effect -0.0162, error: 0.4394, [95%  Conf. Int.]: -0.8775      0.8451 
 ggdid(agg.es) 
 
-jpeg("Figures/FigureAppendix_A62_a.jpg", width = 10, height = 4, units = 'in', res = 400)
+jpeg("Figures/FigureAppendix_A62_b.jpg", width = 10, height = 4, units = 'in', res = 400)
 ggdid(agg.es, title = "b) Average effect by length of exposure for the entire company - Medium quantile") + 
   theme(legend.position="right") +
   ylab("Estimated effect on Relatedness") + 
