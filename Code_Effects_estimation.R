@@ -21,7 +21,6 @@ library(readr) #for reading text files;
 rm(list=ls())
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 DataLong_Subs_sim <- read.csv("Data/Data_matched_MNEs.csv", sep = ";", header = TRUE, dec=",")
-
 #1.1.1.Simple Aggregation
 example_attgt <- att_gt(yname = "Relatedness_Cos2", #the complexity extended;
                         tname = "CurrentYear",
@@ -431,7 +430,7 @@ dev.off()
 #3. Calculate effects on No. of patents owned by the MNE------
 rm(list=ls())
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-DataLong_Subs_2006 <- read.csv("Data/DataLong_Subs_2006.csv", sep = ";", header = TRUE, dec=",")
+DataLong_Subs_2006 <- read.csv("Data/Data_matched_MNEs.csv", sep = ";", header = TRUE, dec=",")
 
 #double check descriptives
 Descript_data<-DataLong_Subs_2006[DataLong_Subs_2006$CurrentYear==2019,]
@@ -456,7 +455,6 @@ example_attgt <- att_gt(yname = "NoPatentsYearGUOtotal",
 
 agg.simple <- aggte(example_attgt, type = "simple")
 summary(agg.simple) #effect 25.0168, error:  4.9943, [95%  Conf. Int.]: 15.2281     34.8054 *
-
 
 #3.2.Dynamic Effects and Event Studies
 agg.es <- aggte(example_attgt, type = "dynamic")
