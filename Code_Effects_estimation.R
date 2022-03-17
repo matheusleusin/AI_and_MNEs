@@ -120,8 +120,8 @@ rm(DataLong_Subs_sim3)
 #2.Relatedness effects across sectors -----
 #2.1.By most used codes-----
 #This is the first proposed distance measure, in which all companies that belong to ICT-related sectors (NACE 5829, 6201, 6311, 
-#6312, 6391, #and 6399) are put in the closest to AI category, MNEs previously classified into the “Less used codes” (which 
-#comprehends #the 20% NACE codes less used by AI adopters) are put in the category with the greatest distance to AI, and all 
+#6312, 6391, and 6399) are put in the closest to AI category, MNEs previously classified into the “Less used codes” (which 
+#comprehends the 20% NACE codes less used by AI adopters) are put in the category with the greatest distance to AI, and all 
 #remaining MNEs are put in a median group
 rm(list=ls())
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
@@ -220,7 +220,7 @@ ggdid(agg.es, title = "a) Average effect by length of exposure for the entire co
              color = "black", size=1, alpha = 0.3)
 dev.off()
 
-##2.1.1.3.Group 3
+#2.1.1.3.Group 3
 #2.1.1.3.1.Simple effects
 example_attgt <- att_gt(yname = "Relatedness_Cos2", #the relatedness extended;
                         tname = "CurrentYear",
@@ -265,7 +265,6 @@ library(Metrics)
 predicted <- SquareMatrixSectors[SquareMatrixSectors$X=="AI",]
 predicted<- predicted[,(-1)]
 predicted<-as.vector(predicted,mode='numeric')
-#predicted[is.na(predicted)] <- 0
 
 observed1 <- SquareMatrixSectors[SquareMatrixSectors$X=="6201",]
 observed1<- observed1[,(-1)]
@@ -291,7 +290,6 @@ rm(list=ls())
 Distance_categories <- read.csv("Data/Distance_categories.csv", sep = ";", header = TRUE, dec=",")
 Distance_categories <- Distance_categories[complete.cases(Distance_categories$AverageDistance), ]
 
-#now it is error, so the lesser the better; therefore, not "top" becomes "bottom" and vice versa.
 Distance_categories$Quartile <- ifelse(Distance_categories$AverageDistance>=quantile(Distance_categories$AverageDistance)[[4]], "bottom",
                            ifelse(Distance_categories$AverageDistance<quantile(Distance_categories$AverageDistance)[[4]] & 
                                     Distance_categories$AverageDistance>quantile(Distance_categories$AverageDistance)[[2]], "medium", "top"))
@@ -558,24 +556,24 @@ DataLong_Subs_sim_Turnover$LogTurnoverExtended <- log10(DataLong_Subs_sim_Turnov
 length(unique(DataLong_Subs_sim_Turnover$id)) #4407
 
 #exclude problematic values:
-#1.Infinte values
+#Infinte values
 Exclude1<-DataLong_Subs_sim_Turnover[DataLong_Subs_sim_Turnover$LogTurnoverExtended == Inf,] #37 observations
 
 '%notin%' <- Negate('%in%')
 DataLong_Subs_sim_Turnover<-DataLong_Subs_sim_Turnover[DataLong_Subs_sim_Turnover$id %notin% Exclude1$id,] 
 rm(Exclude1)
 
-#2. -Infinte
+#-Infinte
 Exclude2<-DataLong_Subs_sim_Turnover[DataLong_Subs_sim_Turnover$LogTurnoverExtended == -Inf,] #569 observations
 DataLong_Subs_sim_Turnover<-DataLong_Subs_sim_Turnover[DataLong_Subs_sim_Turnover$id %notin% Exclude2$id,] #
 rm(Exclude2)
 
-#3. NaN
+#NaN
 Exclude2<-DataLong_Subs_sim_Turnover[is.nan(DataLong_Subs_sim_Turnover$LogTurnoverExtended) == T,] #20 observations
 DataLong_Subs_sim_Turnover<-DataLong_Subs_sim_Turnover[DataLong_Subs_sim_Turnover$id %notin% Exclude2$id,] #
 rm(Exclude2)
 
-#4. NA
+#NA
 Exclude3<-DataLong_Subs_sim_Turnover[is.na(DataLong_Subs_sim_Turnover$LogTurnoverExtended) == T,] #0
 DataLong_Subs_sim_Turnover<-DataLong_Subs_sim_Turnover[DataLong_Subs_sim_Turnover$id %notin% Exclude3$id,] #nothing changed
 rm(Exclude3)
@@ -1001,8 +999,7 @@ DataLong_Subs_sim3[first.treat == 0 | first.treat != 0 , mean(ShareRandDExpenses
 table(DataLong_Subs_sim_RAndD_Expenses$Group)
 length(unique(DataLong_Subs_sim_RAndD_Expenses$id)) #2621
 
-#to do-----
-#replace DataLong_Subs_sim_MNEs by DataLong_Subs_sim_MNEs2
-#rename according to paper;
-#improve name of variables and csv files;
-#upload and open
+#to do ----
+#explain the code a bit better;
+#describe in the general file what the files are, check them if it is okay legally, explain ids can be repeated,
+#maybe paste some figures, cite paper, etc.
