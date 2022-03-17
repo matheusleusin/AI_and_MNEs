@@ -7,7 +7,7 @@ This repository contains an R code and all data necessary to estimate all the ef
 
 The data used to make these estimations comes from Bureau van Dijk's (Bvd) intellectual proprerty via Orbis and Orbis IP. For that reason, the data presented here is a simplified version in which key variables are ommited, i.e., BvD_Ids of companies, which is BvDs propritary identified. It uses an id generated to replace this BvD_Id information, and also omits the name of the companies. The IDs generated come from the result of the matching procedure in the paper (see section "3.2. Matching AI Adopters to Non-adopters"). In this matching procedure, some control companies can be combined more than once to treated companies, meaning that some distinct ids may refer to the same company matched more than 1 time (this happens for roughly less than 5% of the companies).
 
-Two files from the Data folder[https://github.com/matheusleusin/AI_and_MNEs/tree/main/Data] are used to reproduce the code:
+Two files from the [Data folder](https://github.com/matheusleusin/AI_and_MNEs/tree/main/Data) are used to reproduce the code:
 *Data_matched_MNEs.csv* - This data file contains information about the generated ids, the calculated relatedness, NACE sectors, and other MNE-specific indicators  used to make the estimations. The time range goes from 2006 to 2019. This data file looks like this:
 ![image](https://user-images.githubusercontent.com/58182885/158807937-76bb68f0-4778-423d-8cc1-c6a8fa9f3dff.png)
 *SquareMatrixSectors.csv* - This data file presents a square matrix linking NACE sectors to the number of patents identified as registered by any company of these sectors for any 4-digits IPC code. The file looks like this:
